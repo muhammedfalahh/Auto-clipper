@@ -209,10 +209,10 @@ class AudioAnalyzer:
             if segment['confidence'] < min_confidence:
                 continue
 
-            # Skip segments that are too short
+            # Skip segments that are too short (minimum 20 seconds by default)
             duration = segment['end'] - segment['start']
             if duration < min_duration:
-                continue
+                continue  # Skip segments shorter than the minimum duration
 
             text = segment['text'].lower()
 
@@ -323,7 +323,7 @@ class AudioAnalyzer:
         return merged_moments
 
     def analyze(self, video_path: str,
-               min_duration: float = 5.0,
+               min_duration: float = 20.0,  # Minimum clip duration of 20 seconds
                max_duration: float = 60.0,
                max_gap: float = 2.0,
                motivational_only: bool = False) -> List[EngagingMoment]:

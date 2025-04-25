@@ -49,9 +49,9 @@ Auto-Clipper is an advanced tool that automatically creates engaging, vertical (
 
 ## Usage
 
-### Processing YouTube Videos
+### Interactive Mode
 
-The easiest way to use Auto-Clipper is with the YouTube integration:
+The easiest way to use Auto-Clipper is in interactive mode:
 
 1. Activate the virtual environment:
    ```
@@ -59,7 +59,7 @@ The easiest way to use Auto-Clipper is with the YouTube integration:
    source .venv/bin/activate  # macOS/Linux
    ```
 
-2. Run the YouTube Auto-Clipper:
+2. Run the Auto-Clipper:
    ```
    # On Windows PowerShell
    $env:KMP_DUPLICATE_LIB_OK = "TRUE"
@@ -72,34 +72,66 @@ The easiest way to use Auto-Clipper is with the YouTube integration:
    KMP_DUPLICATE_LIB_OK=TRUE python youtube_auto_clipper.py
    ```
 
-3. When prompted, enter a YouTube URL of a podcast or interview video.
+3. When prompted, choose between:
+   - Option 1: Process a YouTube URL
+   - Option 2: Process a local video file
 
 4. The tool will:
-   - Download the video
-   - Analyze it for motivational content
+   - Download the video (if YouTube URL) or use the local file
+   - Analyze it for engaging content (life advice, wisdom, motivation)
    - Select the most viral-worthy segments
    - Create vertical clips
    - Generate a summary report
+
+### Processing YouTube Videos
+
+To directly process a YouTube video:
+
+```
+python youtube_auto_clipper.py -u "https://www.youtube.com/watch?v=EXAMPLE"
+```
+
+Or with the batch file:
+
+```
+.\run_youtube_clipper.bat -u "https://www.youtube.com/watch?v=EXAMPLE"
+```
+
+### Processing Local Videos
+
+To process a local video file:
+
+```
+python youtube_auto_clipper.py -i "path/to/your/video.mp4" -o "output_directory"
+```
+
+Or with the batch file:
+
+```
+.\run_youtube_clipper.bat -i "path/to/your/video.mp4" -o "output_directory"
+```
 
 ### Command Line Options
 
 You can customize the Auto-Clipper with various command-line options:
 
 ```
-python youtube_auto_clipper.py -u "https://www.youtube.com/watch?v=EXAMPLE" --max-clips 10 --max-duration 45 --device cpu
+python youtube_auto_clipper.py [options]
 ```
 
 Available options:
 - `-u, --url`: YouTube URL to process
-- `--max-duration`: Maximum duration of clips in seconds (default: 60)
+- `-i, --input`: Path to a local video file to process
+- `-o, --output-dir`: Directory to save clips when processing local files (default: output)
+- `--max-duration`: Maximum duration of clips in seconds (default: 60, minimum: 20)
 - `--max-clips`: Maximum number of clips to generate (default: 5)
 - `--whisper-model`: Whisper model size to use (tiny.en, base.en, small.en, medium.en)
 - `--device`: Device to run models on (cpu or cuda)
 - `--debug`: Enable debug logging
 
-### Processing Local Videos
+### Legacy Local Video Processing
 
-You can also process videos already on your computer:
+You can also use the original local video processor:
 
 ```
 python run_auto_clipper.py
