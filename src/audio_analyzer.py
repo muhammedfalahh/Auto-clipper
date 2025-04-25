@@ -37,7 +37,13 @@ class AudioAnalyzer:
         # Surprising information
         "surprising", "unexpected", "shocking", "unbelievable", "mind-blowing",
         # Strong opinions
-        "absolutely", "definitely", "strongly", "believe", "passionate"
+        "absolutely", "definitely", "strongly", "believe", "passionate",
+        # Life advice specific
+        "life lesson", "taught me", "learned that", "realize", "understand",
+        "truth", "reality", "important to know", "remember that", "never forget",
+        # Wisdom indicators
+        "wise", "smart", "intelligent", "clever", "brilliant", "genius",
+        "knowledge", "understanding", "enlightenment", "awareness"
     ]
 
     # Keywords specifically for motivational content
@@ -56,12 +62,26 @@ class AudioAnalyzer:
 
         # Life advice
         "advice", "lesson", "wisdom", "experience", "insight", "perspective",
+        "life lesson", "best advice", "important lesson", "key lesson",
+        "what I learned", "taught me", "changed how I", "secret to",
+
+        # Wisdom and knowledge
+        "wisdom", "knowledge", "understand", "realize", "enlighten",
+        "truth", "reality", "fact of life", "life truth", "universal truth",
+        "principle", "philosophy", "way of thinking", "mindset shift",
 
         # Emotional impact
         "changed my life", "breakthrough", "revelation", "epiphany", "realization",
+        "transformative", "life-changing", "profound", "powerful", "impactful",
 
         # Storytelling markers
-        "story", "when I was", "happened to me", "realized", "discovered"
+        "story", "when I was", "happened to me", "realized", "discovered",
+        "learned that", "found out", "came to understand", "my journey",
+
+        # Life guidance
+        "should never", "always remember", "never forget", "key is to",
+        "secret is", "most important thing", "critical to", "essential to",
+        "focus on", "prioritize", "remember that", "don't waste", "invest in"
     ]
 
     def __init__(self, model_size: str = "small.en", device: str = "cuda"):

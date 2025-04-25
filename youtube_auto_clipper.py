@@ -118,7 +118,7 @@ def prompt_for_url():
         else:
             print("URL cannot be empty. Please try again.")
 
-def process_youtube_video(url, max_duration=60, max_clips=5, whisper_model="small.en", device="cuda"):
+def process_youtube_video(url, max_duration=60, max_clips=5, whisper_model="small.en", device="cuda", content_type="all"):
     """
     Process a YouTube video to create motivational clips.
 
@@ -175,13 +175,18 @@ def process_youtube_video(url, max_duration=60, max_clips=5, whisper_model="smal
         print("="*80)
         audio_analyzer = AudioAnalyzer(model_size=whisper_model, device=device)
 
+        # Determine whether to filter for specific content
+        motivational_only = (content_type == "motivational")
+
         audio_moments = audio_analyzer.analyze(
             video_path,
             min_duration=5.0,
             max_duration=max_duration,
             max_gap=2.0,
-            motivational_only=True  # Only look for motivational content
+            motivational_only=False  # Look for all engaging content including life advice and wisdom
         )
+
+        print(f"PROGRESS: Looking for all engaging content including life advice, wisdom, and motivational segments")
 
         logger.info(f"Found {len(audio_moments)} motivational moments")
         print(f"Found {len(audio_moments)} motivational moments in the video")
@@ -317,7 +322,8 @@ def main():
         max_duration=args.max_duration,
         max_clips=args.max_clips,
         whisper_model=args.whisper_model,
-        device=args.device
+        device=args.device,
+        content_type="all"  # Include all engaging content, not just motivational
     )
 
 if __name__ == "__main__":

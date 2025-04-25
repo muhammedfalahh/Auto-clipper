@@ -5,7 +5,7 @@ Auto-Clipper is an advanced tool that automatically creates engaging, vertical (
 ## Features
 
 - **YouTube Integration**: Download videos directly from YouTube URLs
-- **Motivational Content Detection**: Identifies segments containing life advice, motivation, and encouragement
+- **Content Detection**: Identifies segments containing life advice, wisdom, motivation, and encouragement
 - **Face-Centered Cropping**: Uses face detection to ensure subjects remain in frame
 - **Viral Optimization**: Scores and selects the most viral-worthy moments based on:
   - Emotional impact
